@@ -1,17 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:p1/model/item.dart';
 import 'widget/card_body.dart';
+import 'widget/model_bottom.dart';
 
 void main() {
-  runApp(const MaterialApp(
+  runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
     home: MyApp(),
   ));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  MyApp({super.key});
 
   void showData() {}
+
+  final List<DataItems> items = [
+    DataItems(id: "1", name: "Tap the duc"),
+    DataItems(id: "2", name: "Boi loi"),
+    DataItems(id: "3", name: "Lam viec"),
+    DataItems(id: "4", name: "An trua"),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -45,33 +54,7 @@ class MyApp extends StatelessWidget {
             backgroundColor: Colors.grey[400],
             isScrollControlled: true,
             builder: (BuildContext context) {
-              return Padding(
-                padding: MediaQuery.of(context).viewInsets,
-                child: SingleChildScrollView(
-                  padding: const EdgeInsets.all(20),
-                  child: Column(
-                    children: [
-                      const TextField(
-                        decoration: InputDecoration(
-                          labelText: "Your task",
-                          border: OutlineInputBorder(),
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      SizedBox(
-                        width: double.infinity,
-                        height: 50,
-                        child: ElevatedButton(
-                          onPressed: () {},
-                          child: const Text("Add Task"),
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-              );
+              return const ModelBottom();
             },
           );
         },
