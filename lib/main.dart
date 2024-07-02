@@ -15,11 +15,11 @@ class MyApp extends StatelessWidget {
 
   void showData() {}
 
-  final List<DataItems> items = [
-    DataItems(id: "1", name: "Tap the duc"),
-    DataItems(id: "2", name: "Boi loi"),
-    DataItems(id: "3", name: "Lam viec"),
-    DataItems(id: "4", name: "An trua"),
+  final List<DataItem> items = [
+    DataItem(id: "1", name: "Tap the duc"),
+    DataItem(id: "2", name: "Boi loi"),
+    DataItem(id: "3", name: "Lam viec"),
+    DataItem(id: "4", name: "An trua"),
   ];
 
   @override
@@ -33,12 +33,10 @@ class MyApp extends StatelessWidget {
           style: TextStyle(fontSize: 40, color: Colors.white),
         ),
       ),
-      body: const SingleChildScrollView(
-        padding: EdgeInsets.all(20),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(20),
         child: Column(
-          children: [
-            CardBody(),
-          ],
+          children: items.map((item) => CardBody(item: item)).toList(),
         ),
       ),
       floatingActionButton: FloatingActionButton(

@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 
 class CardBody extends StatelessWidget {
-  const CardBody({
-    super.key,
-  });
+  const CardBody({super.key, required this.item});
+  final item;
 
   @override
   Widget build(BuildContext context) {
@@ -15,20 +14,20 @@ class CardBody extends StatelessWidget {
         color: const Color(0xffdfdfdf),
         borderRadius: BorderRadius.circular(12),
       ),
-      child: const Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              "Tap the duc buoi sang",
-              style: TextStyle(
+              item.name,
+              style: const TextStyle(
                 fontSize: 20,
                 color: Color(0xff4B4B4B),
                 fontWeight: FontWeight.bold,
               ),
             ),
-            Icon(
+            const Icon(
               Icons.delete_outline,
               color: Color(0xff4B4B4B),
               size: 30,

@@ -1,5 +1,5 @@
-class DataItems {
+class DataItem {
   final String id;
   final String name;
-  DataItems({required this.id, required this.name});
+  DataItem({required this.id, required this.name});
 }
