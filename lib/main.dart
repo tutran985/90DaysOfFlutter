@@ -36,6 +36,13 @@ class MyApp extends StatelessWidget {
         onPressed: () {
           showModalBottomSheet(
             context: context,
+            shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.vertical(
+                top: Radius.circular(20),
+                bottom: Radius.circular(0),
+              ),
+            ),
+            backgroundColor: Colors.grey[400],
             isScrollControlled: true,
             builder: (BuildContext context) {
               return Padding(
