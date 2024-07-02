@@ -1,9 +1,19 @@
 import 'package:flutter/material.dart';
 
 class ModelBottom extends StatelessWidget {
-  const ModelBottom({
+  ModelBottom({
     super.key,
   });
+
+  // lay gia tri trong o input textField
+  // cach 1: use onChanged event
+  String textValue = '';
+  // cach 2: use TextEditingController and controller
+  TextEditingController value = TextEditingController();
+  void _handleOnClick() {
+    // print(textValue);
+    print(value.text);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -13,8 +23,12 @@ class ModelBottom extends StatelessWidget {
         padding: const EdgeInsets.all(20),
         child: Column(
           children: [
-            const TextField(
-              decoration: InputDecoration(
+            TextField(
+              // onChanged: (value) {
+              //   textValue = value;
+              // },
+              controller: value,
+              decoration: const InputDecoration(
                 labelText: "Your task",
                 border: OutlineInputBorder(),
               ),
@@ -26,7 +40,7 @@ class ModelBottom extends StatelessWidget {
               width: double.infinity,
               height: 50,
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: _handleOnClick,
                 child: const Text("Add Task"),
               ),
             )

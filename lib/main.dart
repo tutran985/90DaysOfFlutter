@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20),
         child: Column(
-          children: items.map((item) => CardBody(item: item)).toList(),
+          children:  items.map((item) => CardBody(item: item)).toList(),
         ),
       ),
       floatingActionButton: FloatingActionButton(
@@ -52,7 +52,7 @@ class MyApp extends StatelessWidget {
             backgroundColor: Colors.grey[400],
             isScrollControlled: true,
             builder: (BuildContext context) {
-              return const ModelBottom();
+              return ModelBottom();
             },
           );
         },
