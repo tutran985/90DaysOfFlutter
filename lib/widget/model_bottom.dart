@@ -2,17 +2,25 @@ import 'package:flutter/material.dart';
 
 class ModelBottom extends StatelessWidget {
   ModelBottom({
+    required this.addTask,
     super.key,
   });
 
+  final Function addTask;
   // lay gia tri trong o input textField
   // cach 1: use onChanged event
   String textValue = '';
   // cach 2: use TextEditingController and controller
   TextEditingController value = TextEditingController();
-  void _handleOnClick() {
+
+  void _handleOnClick(BuildContext context) {
     // print(textValue);
-    print(value.text);
+    final name = value.text;
+    if (name.isEmpty) {
+      return;
+    }
+    addTask(name);
+    Navigator.pop(context);
   }
 
   @override
@@ -40,7 +48,7 @@ class ModelBottom extends StatelessWidget {
               width: double.infinity,
               height: 50,
               child: ElevatedButton(
-                onPressed: _handleOnClick,
+                onPressed: () => _handleOnClick(context),
                 child: const Text("Add Task"),
               ),
             )

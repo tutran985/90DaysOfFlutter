@@ -4,15 +4,20 @@ import 'widget/card_body.dart';
 import 'widget/model_bottom.dart';
 
 void main() {
-  runApp(MaterialApp(
+  runApp(const MaterialApp(
     debugShowCheckedModeBanner: false,
     home: MyApp(),
   ));
 }
 
-class MyApp extends StatelessWidget {
-  MyApp({super.key});
+class MyApp extends StatefulWidget {
+  const MyApp({super.key});
 
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   void showData() {}
 
   final List<DataItem> items = [
@@ -21,6 +26,13 @@ class MyApp extends StatelessWidget {
     DataItem(id: "3", name: "Lam viec"),
     DataItem(id: "4", name: "An trua"),
   ];
+
+  void _handleAddTask(String name) {
+    final item = DataItem(id: DateTime.now().toString(), name: name);
+    setState(() {
+      items.add(item);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +48,7 @@ class MyApp extends StatelessWidget {
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20),
         child: Column(
-          children:  items.map((item) => CardBody(item: item)).toList(),
+          children: items.map((item) => CardBody(item: item)).toList(),
         ),
       ),
       floatingActionButton: FloatingActionButton(
@@ -52,7 +64,7 @@ class MyApp extends StatelessWidget {
             backgroundColor: Colors.grey[400],
             isScrollControlled: true,
             builder: (BuildContext context) {
-              return ModelBottom();
+              return ModelBottom(addTask: _handleAddTask);
             },
           );
         },
