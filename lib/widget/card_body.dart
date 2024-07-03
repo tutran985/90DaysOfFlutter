@@ -1,8 +1,14 @@
+import 'package:confirm_dialog/confirm_dialog.dart';
 import 'package:flutter/material.dart';
 
 class CardBody extends StatelessWidget {
-  const CardBody({super.key, required this.item});
+  const CardBody({
+    super.key,
+    required this.item,
+    required this.deleteTask,
+  });
   final item;
+  final Function deleteTask;
 
   @override
   Widget build(BuildContext context) {
@@ -27,10 +33,18 @@ class CardBody extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            const Icon(
-              Icons.delete_outline,
-              color: Color(0xff4B4B4B),
-              size: 30,
+            InkWell(
+              onTap: () async {
+                if (await confirm(context)) {
+                  deleteTask(item.id);
+                }
+                return print('pressedCancel');
+              },
+              child: const Icon(
+                Icons.delete_outline,
+                color: Color(0xff4B4B4B),
+                size: 30,
+              ),
             ),
           ],
         ),

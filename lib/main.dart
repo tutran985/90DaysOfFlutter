@@ -20,17 +20,18 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   void showData() {}
 
-  final List<DataItem> items = [
-    DataItem(id: "1", name: "Tap the duc"),
-    DataItem(id: "2", name: "Boi loi"),
-    DataItem(id: "3", name: "Lam viec"),
-    DataItem(id: "4", name: "An trua"),
-  ];
+  final List<DataItem> items = [];
 
   void _handleAddTask(String name) {
     final item = DataItem(id: DateTime.now().toString(), name: name);
     setState(() {
       items.add(item);
+    });
+  }
+
+  void _handleDeleteTask(String id) {
+    setState(() {
+      items.removeWhere((item) => item.id == id);
     });
   }
 
@@ -48,7 +49,10 @@ class _MyAppState extends State<MyApp> {
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20),
         child: Column(
-          children: items.map((item) => CardBody(item: item)).toList(),
+          children: items
+              .map(
+                  (item) => CardBody(item: item, deleteTask: _handleDeleteTask))
+              .toList(),
         ),
       ),
       floatingActionButton: FloatingActionButton(
