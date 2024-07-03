@@ -6,9 +6,11 @@ class CardBody extends StatelessWidget {
     super.key,
     required this.item,
     required this.deleteTask,
+    required this.index,
   });
   final item;
   final Function deleteTask;
+  final int index;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +19,9 @@ class CardBody extends StatelessWidget {
       width: double.infinity,
       height: 70,
       decoration: BoxDecoration(
-        color: const Color(0xffdfdfdf),
+        color: (index % 2 == 0)
+            ? const Color(0xffdfdfdf)
+            : const Color.fromARGB(255, 0, 210, 247),
         borderRadius: BorderRadius.circular(12),
       ),
       child: Padding(

@@ -51,7 +51,12 @@ class _MyAppState extends State<MyApp> {
         child: Column(
           children: items
               .map(
-                  (item) => CardBody(item: item, deleteTask: _handleDeleteTask))
+                (item) => CardBody(
+                  index: items.indexOf(item),
+                  item: item,
+                  deleteTask: _handleDeleteTask,
+                ),
+              )
               .toList(),
         ),
       ),
